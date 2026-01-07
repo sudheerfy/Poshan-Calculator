@@ -11922,8 +11922,17 @@
     /* ================= EVENTS ================= */
     document.querySelectorAll("input,select").forEach(e => e.addEventListener("input", render));
 
+    function clearResults() {
+      document.getElementById('ageBox').innerHTML = '';
+      document.getElementById('stuntingTable').innerHTML = '';
+      document.getElementById('underweightTable').innerHTML = '';
+      document.getElementById('wastedTable').innerHTML = '';
+      const finalResultEl = document.getElementById('finalResult');
+      if (finalResultEl) finalResultEl.innerHTML = '';
+    }
+
     function render() {
-      finalResult.innerHTML = "";
+      clearResults();
 
       const g = document.querySelector('input[name="gender"]:checked')?.value;
 
@@ -12190,14 +12199,6 @@
             console.log("Picker open error:", err);
           }
         });
-      }
-
-      function clearResults() {
-        document.getElementById('ageBox').innerHTML = '';
-        document.getElementById('stuntingTable').innerHTML = '';
-        document.getElementById('underweightTable').innerHTML = '';
-        document.getElementById('wastedTable').innerHTML = '';
-        document.getElementById('finalResult').innerHTML = '';
       }
 
       // 4. Auto-Focus Logic (Advance & Reverse)
